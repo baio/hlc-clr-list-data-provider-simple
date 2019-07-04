@@ -15,18 +15,18 @@ import {
     TableDataProviderConfig
 } from '@ng-holistic/clr-list';
 
-import { AppModels } from './app.models';
-
-
+// Correct architecture requires more code, here we simplify things for the sample
+// and map dto models to component models directly without intermediate application models
 const tableDataProviderConfig: TableDataProviderConfig = {
-    // map component model to app domain model for requests
+    // map component model to dto model for requests
     mapState(state: ClrDatagridStateInterface): any {
         const page = state.page && state.page.from / state.page.size + 1;
         return {page: page ? page.toString() : '1'};
     },
-    // map app domain response object to component model object
+    // map dto response object to component model object
     mapResult(response: any): Table.Data.Result {
         return {
+            // here we just fake required id field for the row 
             rows: response.results.map((m, i) => ({id: i, ...m})),
             paginator: {
                 pageIndex: response.next ? parseInt(response.next.split('=')[1]) - 1 : parseInt(response.previous.split('=')[1]) + 1,

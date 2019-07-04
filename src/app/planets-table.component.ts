@@ -32,6 +32,12 @@ export class TableComponent {
   constructor(httpClient: HttpClient) {
     this.dataProvider = {
       load(state: any) {
+        // In general it is not a good idea to use http service directly from Component
+        // real applications should always provide data access layer which make requests
+        // to the rest API services and then returns data in application model structures 
+        // not in raw dto object.
+        // Correct architecture requires more code, here we simplify things for the sample
+        // and map dto models to component models directly without intermediate application layer
         return httpClient
           .get('https://swapi.co/api/planets', {
             params: state
