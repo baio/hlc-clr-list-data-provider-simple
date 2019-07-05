@@ -43,7 +43,7 @@ export class TableComponent {
             params: state
           }).pipe(
             catchError(err => {
-              return throwError('SWAPI return error');
+              return throwError('SWAPI returns error');
             })
           );
       }
