@@ -15,6 +15,11 @@ import {
     TableDataProviderConfig
 } from '@ng-holistic/clr-list';
 
+// CLARITY ICONS DEPENDENCY: THIS REQUIRED ONLY IN STACKBLITZ SEE #700
+import '@clr/icons';
+import '@clr/icons/shapes/all-shapes';
+//
+
 // Correct architecture requires more code, here we simplify things for the sample
 // and map dto models to component models directly without intermediate application models
 const tableDataProviderConfig: TableDataProviderConfig = {
